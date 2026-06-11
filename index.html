@@ -1,240 +1,223 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cơm Suất Hôm Nay</title>
 
-<title>Lì Xì STV 2026</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        body{
+            background:#f5f5f5;
+            color:#333;
+        }
 
-<style>
+        .header{
+            background:#ff6b35;
+            color:white;
+            text-align:center;
+            padding:20px;
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Be Vietnam Pro',sans-serif;
-}
+        .header h1{
+            font-size:24px;
+        }
 
-body{
-    min-height:100vh;
-    background:linear-gradient(135deg,#ff2d2d,#ffcc00);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+        .header p{
+            margin-top:5px;
+            font-size:14px;
+        }
 
-/* Main box */
-.container{
-    background:#fff;
-    width:95%;
-    max-width:450px;
-    padding:30px 25px 35px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.3);
-}
+        .banner{
+            width:100%;
+            height:220px;
+            background:url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200') center/cover;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:white;
+            text-shadow:1px 1px 5px rgba(0,0,0,0.5);
+        }
 
-/* Title */
-h1{
-    color:#d40000;
-    font-size:26px;
-    margin-bottom:10px;
-}
+        .banner h2{
+            background:rgba(0,0,0,0.4);
+            padding:12px 20px;
+            border-radius:10px;
+        }
 
-.subtitle{
-    font-size:14px;
-    color:#666;
-    margin-bottom:25px;
-}
+        .section-title{
+            padding:15px;
+            font-size:22px;
+            font-weight:bold;
+        }
 
-/* Envelope area */
-.envelopes{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:25px;
-}
+        .menu-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:15px;
+            padding:15px;
+        }
 
-.envelope{
-    flex:1;
-    height:160px;
-    background:linear-gradient(180deg,#ff1e1e,#c80000);
-    border-radius:15px;
-    cursor:pointer;
-    position:relative;
-    box-shadow:0 6px 15px rgba(0,0,0,0.25);
-    transition:0.3s;
-}
+        .food-card{
+            background:white;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
 
-.envelope:hover{
-    transform:translateY(-5px) scale(1.05);
-}
+        .food-card:hover{
+            transform:translateY(-5px);
+        }
 
-.envelope::before{
-    content:"🧧";
-    font-size:50px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-}
+        .food-card img{
+            width:100%;
+            height:180px;
+            object-fit:cover;
+        }
 
-/* Disabled */
-.envelope.disabled{
-    opacity:0.5;
-    pointer-events:none;
-}
+        .food-info{
+            padding:15px;
+        }
 
-/* Result */
-.result{
-    min-height:60px;
-    font-size:22px;
-    font-weight:700;
-    color:#d40000;
-    margin-top:10px;
-}
+        .food-name{
+            font-size:18px;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
 
-/* Info */
-.info{
-    margin-top:15px;
-    font-size:13px;
-    color:#888;
-}
+        .food-price{
+            color:#ff6b35;
+            font-size:20px;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
 
-/* Animation */
-@keyframes shake{
-    0%{transform:rotate(0);}
-    25%{transform:rotate(3deg);}
-    50%{transform:rotate(-3deg);}
-    75%{transform:rotate(2deg);}
-    100%{transform:rotate(0);}
-}
+        .food-desc{
+            color:#666;
+            font-size:14px;
+            margin-bottom:15px;
+        }
 
-.shake{
-    animation:shake 0.4s;
-}
+        .order-btn{
+            width:100%;
+            border:none;
+            background:#ff6b35;
+            color:white;
+            padding:12px;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:15px;
+            font-weight:bold;
+        }
 
-</style>
+        .order-btn:hover{
+            background:#e85a2a;
+        }
+
+        .delivery-info{
+            background:white;
+            margin:15px;
+            padding:20px;
+            border-radius:15px;
+        }
+
+        .delivery-info h3{
+            margin-bottom:10px;
+            color:#ff6b35;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            color:#777;
+            font-size:14px;
+        }
+
+        @media(max-width:768px){
+            .banner{
+                height:180px;
+            }
+
+            .banner h2{
+                font-size:18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <header class="header">
+        <h1>🍱 CƠM SUẤT HÔM NAY</h1>
+        <p>Đặt trước 11:15 - Nhận cơm 12:00</p>
+    </header>
 
-    <h1>🧧 LÌ XÌ MAY MẮN STV 🧧</h1>
+    <section class="banner">
+        <h2>Thực Đơn Ngày Hôm Nay</h2>
+    </section>
 
-    <div class="subtitle">
-        Chọn 1 bao lì xì để nhận may mắn đầu năm
+    <h2 class="section-title">🍛 Cơm Suất</h2>
+
+    <div class="menu-container">
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1604908554007-8a1b3f83b8c7?q=80&w=1200" alt="">
+            <div class="food-info">
+                <div class="food-name">Cơm Sườn Nướng</div>
+                <div class="food-price">35.000đ</div>
+                <div class="food-desc">
+                    Sườn nướng than hoa, dưa góp, rau sống.
+                </div>
+                <button class="order-btn">Đặt Món</button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=1200" alt="">
+            <div class="food-info">
+                <div class="food-name">Cơm Gà Chiên</div>
+                <div class="food-price">30.000đ</div>
+                <div class="food-desc">
+                    Gà giòn rụm, canh rau và đồ chua.
+                </div>
+                <button class="order-btn">Đặt Món</button>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1559847844-d721426d6edc?q=80&w=1200" alt="">
+            <div class="food-info">
+                <div class="food-name">Cơm Cá Kho</div>
+                <div class="food-price">32.000đ</div>
+                <div class="food-desc">
+                    Cá kho tiêu, canh rau, cơm nóng.
+                </div>
+                <button class="order-btn">Đặt Món</button>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Envelopes -->
-    <div class="envelopes">
+    <section class="delivery-info">
+        <h3>🚚 Thông Tin Giao Hàng</h3>
+        <p><strong>Thời gian nhận:</strong> 11:45 - 12:15</p>
+        <p><strong>Địa điểm:</strong> Sảnh nhà trọ</p>
+        <p><strong>Phí giao:</strong> 5.000đ/suất</p>
+    </section>
 
-        <div class="envelope" onclick="openLucky(this)"></div>
-        <div class="envelope" onclick="openLucky(this)"></div>
-        <div class="envelope" onclick="openLucky(this)"></div>
-
-    </div>
-
-    <div class="result" id="result"></div>
-
-    <div class="info">
-        ⏰ Mỗi người chỉ được rút 1 lần / ngày
-    </div>
-
-</div>
-
-
-<script>
-
-/* Prize with rate (higher money = lower rate) */
-const gifts = [
-    { text: "🎉 Trúng 10.000đ", rate: 40 },
-    { text: "🎉 Trúng 20.000đ", rate: 30 },
-    { text: "🎉 Trúng 50.000đ", rate: 20 },
-    { text: "🏆 Trúng 100.000đ", rate: 10 }
-];
-
-const result = document.getElementById("result");
-const envelopes = document.querySelectorAll(".envelope");
-
-/* Get today key */
-function getTodayKey(){
-    const d = new Date();
-    return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-}
-
-/* Check played today */
-function hasPlayedToday(){
-    return localStorage.getItem("lucky_"+getTodayKey());
-}
-
-/* Lock envelopes */
-function lockAll(){
-    envelopes.forEach(e=>{
-        e.classList.add("disabled");
-    });
-}
-
-/* Weighted random */
-function randomGift(){
-
-    let pool = [];
-
-    gifts.forEach(g=>{
-        for(let i=0;i<g.rate;i++){
-            pool.push(g.text);
-        }
-    });
-
-    let rand = Math.floor(Math.random()*pool.length);
-
-    return pool[rand];
-}
-
-/* Main function */
-function openLucky(el){
-
-    if(hasPlayedToday()){
-        result.innerHTML = "⚠️ Bạn đã rút hôm nay rồi. Hãy quay lại ngày mai nhé!";
-        lockAll();
-        return;
-    }
-
-    /* Animation */
-    el.classList.add("shake");
-    result.innerHTML = "⏳ Đang mở lì xì...";
-
-    setTimeout(()=>{
-
-        el.classList.remove("shake");
-
-        let gift = randomGift();
-
-        result.innerHTML = gift;
-
-        /* Save played */
-        localStorage.setItem("lucky_"+getTodayKey(),"true");
-
-        lockAll();
-
-    },800);
-}
-
-
-/* Auto check when load */
-window.onload = ()=>{
-
-    if(hasPlayedToday()){
-        result.innerHTML = "✅ Bạn đã rút hôm nay rồi. Hẹn gặp lại ngày mai!";
-        lockAll();
-    }
-
-};
-
-</script>
+    <footer>
+        © 2026 Cơm Suất Nhà Trọ | Hotline: 09xxxxxxxx
+    </footer>
 
 </body>
 </html>
